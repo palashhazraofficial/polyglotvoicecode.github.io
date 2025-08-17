@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Polyglot VoiceCode</title>
+  <meta name="description" content="Polyglot VoiceCode — Offline voice typing for Windows (VOSK).">
+
+  <!-- Favicon -->
+  <!-- ⿡ Save your icon as "favicon.png" or "favicon.ico" -->
+  <!-- ⿢ Place it in the same folder as this HTML file -->
+  <!-- ⿣ If your icon is in another folder, update the href path below -->
+  <link rel="icon" type="image/png" href="favicon.ico">
+
+  <style>
+  :root {
+    --bg: #ffffff; /* white background */
+    --surface: #cccccc; /* light card background. */
+    --muted: #6c757d; /* muted gray text */
+    --accent1: #000000; /* black for buttons */
+    --accent2: #555555; /* dark gray hover */
+    --radius: 14px;
+    --mono: "Segoe UI", Roboto, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    font-family: var(--mono);
+    background: var(--bg);
+    color: #000;
+    line-height: 1.5;
+    padding-bottom: 60px;
+    animation: fadeIn 1s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .wrap { max-width: 1100px; margin: 36px auto; padding: 28px; }
+
+  header {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid #ddd;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+    animation: slideDown 0.8s ease;
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: #000;
+    display: grid;
+    place-items: center;
+    font-weight: 900;
+    font-size: 20px;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    animation: floaty 4s ease-in-out infinite;
+  }
+
+  h1 { margin: 0; font-size: 18px; letter-spacing: 0.2px; }
+  .tag { color: var(--muted); font-size: 12px; margin-top: 3px; }
+
+  .top-stats { display: flex; gap: 12px; align-items: center; }
+  .stat {
+    background: var(--surface);
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-weight: 700;
+    color: #000;
+    font-size: 13px;
+    border: 1px solid #ddd;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 18px;
+    border: 1px solid #ddd;
+    animation: fadeIn 1s ease-in;
+  }
+
+  .download-buttons { display: flex; flex-direction: column; gap: 12px; align-items: stretch; }
+  .btn {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    background: var(--accent1);
+    transition: transform .15s ease, background .15s ease;
+  }
+  .btn:hover {
+    transform: translateY(-4px);
+    background: var(--accent2);
+  }
+  .btn.secondary {
+    background: #f5f5f5;
+    color: #000;
+    border: 1px solid #ddd;
+  }
+  .btn .emoji { font-size: 18px; }
+
+  .pill {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #e9ecef;
+    color: var(--muted);
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  pre.about {
+    white-space: pre-wrap;
+    font-family: inherit;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    color: #000;
+  }
+
+  .license pre { max-height: 420px; overflow: auto; color: #333; }
+  .contact a { color: #000; text-decoration: underline; font-weight: 700; }
+
+  footer {
+    margin-top: 24px;
+    color: var(--muted);
+    text-align: center;
+    font-size: 13px;
+  }
+
+  @keyframes floaty {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+  }
+
+  @media(max-width: 980px) {
+    .hero { grid-template-columns: 1fr; }
+    .top-stats { display: none; }
+  }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">
+          <img src="favicon.ico" alt="Polyglot Logo" style="height:45px"> 
+        </div>
+        <div>
+          <h1>Polyglot VoiceCode</h1>
+          <div class="tag">Offline voice typing — Version 1.0.0</div>
+        </div>
+      </div>
+      <div class="top-stats" aria-hidden="true">
+        <div class="stat">👥 Visitors: <span id="visitor-count">—</span></div>
+        <div class="stat">⬇ Downloads: <span id="downloads-total">—</span></div>
+      </div>
+    </header>
+
+    <main style="margin-top:18px">
+      <section class="hero">
+        <div class="card">
+          <h2 style="margin:0 0 10px 0">About</h2>
+          <div style="color:var(--muted); margin-bottom:12px">Polyglot VoiceCode — Offline speech recognition using VOSK</div>
+          <pre class="about">
+
+# Polyglot VoiceCode
+# Version 1.0.0
+
+Polyglot VoiceCode is a desktop application that allows you to type using your voice. It supports offline speech recognition using [vosk] (https://alphacephei.com/vosk/), meaning you don't need the internet to use it.
+
+----
+
+✨ Features
+- 🎤 Offline voice typing (no internet required)
+- 🌐 Supports English (Indian/US) accent
+- 🖤 Modern dark theme status winodw
+- ⌨ Toggle with hotkeys (Ctrl + Alt + V)
+- 💻 Works in any text field across applications
+
+----
+
+📦 Requirements
+- 🖥 Windows 10/11 (64-bit)
+- 💽 At least ~300-310 MB of free space
+- 🎤 Microphone access
+
+----
+
+🧰 Installation
+1. Download the installer from below.
+2. Run the installer and follow on-screen instructions.
+3. Launch the app from Start Menu.
+
+----
+
+🛠 Usage
+1. Press Ctrl + Alt + V to start/stop voice typing.
+2. Speak clearly — recognized text appears in the active text field.
+
+---
+          </pre>
+        </div>
+
+        <aside class="card" style="display:flex; flex-direction:column; gap:12px; align-items:stretch;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div>
+              <div style="font-weight:900">Download</div>
+              <div class="pill" style="margin-top:8px">Windows 10 / 11 (64-bit)</div>
+            </div>
+            <div style="text-align:right; color:var(--muted); font-size:13px">Installer size: ~100MB</div>
+          </div>
+
+          <div class="download-buttons"> <!--.............-->
+            <a id="dl-ind" class="btn" href="https://github.com/palashhazraofficial/Polyglot_VoiceCode_Indian_English/releases/download/v1.0.0/Polyglot_VoiceCode_Indian_English_Setup.exe" data-key="download_ind">
+              <span class="emoji">🇮🇳</span>
+              <span style="flex:1; text-align:center">Polyglot VoiceCode — Indian English (Windows)</span>
+              <strong style="min-width:54px; text-align:right">⬇</strong>
+            </a>
+
+            <a id="dl-us" class="btn secondary" href="https://github.com/palashhazraofficial/Polyglot_VoiceCode_US_English/releases/download/v1.0.0/Polyglot_VoiceCode_US_English_Setup.exe" data-key="download_us">
+              <span class="emoji">🇺🇸</span>
+              <span style="flex:1; text-align:center">Polyglot VoiceCode — US English (Windows)</span>
+              <strong style="min-width:54px; text-align:right">⬇</strong>
+            </a>
+          </div>
+
+          <div style="display:flex; gap:10px; justify-content:space-between; align-items:center;">
+            <div style="color:var(--muted); font-size:13px">
+              Per-Version:
+              <div style="margin-top:6px">
+                🇮🇳 <span id="count-ind">0</span> • 🇺🇸 <span id="count-us">0</span>
+              </div>
+            </div>
+
+            <div style="text-align:right; color:var(--muted); font-size:13px">
+              Last updated: 2025
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section style="margin-top:18px" class="card license">
+        <h3 style="margin-top:0">Proprietary Software License Agreement</h3>
+        <pre>Copyright (c) 2025 Palash Hazra. All Rights Reserved.
+
+This software and its associated files (the "Software") are the exclusive property of
+Palash Hazra. By downloading, installing, copying or otherwise using the Software, you agree
+to be bound by the following termes:
+
+1. Grant of License
+    You are granted a limited, non-exclusive, non-transferable license to use the
+    Software for personal or commercial purpose as specified by author.
+    You may NOT:
+    - Copy, modify, or create derivative works of the Software.
+    - Distribute, sell, rent, lease, or sublicense the Software.
+    - Reverse-engineer, decompile, or disassemble the Software.
+
+2. Ownership
+    All rights, title, and interest in the Software, including all intellectual
+    property rights, are and will remain the sole property of Palash Hazra.
+
+3. Restrictions
+    Unauthorized use, reproduction, or distribution of the Software or any portion
+    of it may result in severe civil and criminal penalties and will be prosecuted
+    to the maximum extent possible under the law.
+
+4. Disclaimer of Warranty
+    The Software is provided "AS IS" without warranty of any kind, express or implied,
+    including but limited to warranties of merchantability, fitness for a particular
+    purpose, or non-infringement
+
+5. Limitation of Liability
+    In no event shall Palash Hazra be liable for any damages arising out of or
+    in connection with the use or inability to use the Software.
+
+6. Termination
+    This license is effective until terminated. Faliure to comply with any term will
+    result in automatic termination of your rights to use the Software.
+
+For licensing inquiries, support, please contact:
+Palash Hazra
+email: contactpalashhazra@gmail.com
+official website: www.polyglot.com
+
+        </pre>
+      </section>
+
+      <section style="margin-top:18px" class="card contact">
+        <h3 style="margin-top:0">Feedback & Contact</h3>
+        <p style="color:var(--muted); margin-top:6px">
+          For licensing or support (WE WILL BE HAPPY TO TALK):
+        </p>
+        <p style="margin:0.35rem 0">
+          <a href="mailto:contactpalashhazra@gmail.com">contactpalashhazra@gmail.com</a>
+        </p>
+      </section>
+
+      
+      <section style="margin-top:18px" class="card contact">
+        <h3 style="margin-top:0">Follow Us</h3>
+        <p style="color:var(--muted); margin-top:6px">
+          Follow us on social media for updates, notifications and NEW launches:
+        </p>
+        <p style="margin:0.35rem 0">
+          <a href="https://www.linkedin.com/in/palash-hazra-294b9036b">LinkedIn Account</a>
+        </p>
+        <p style="margin:0.35rem 0">
+          <a href="https://youtube.com/@palashhazraofficial?si=g7oqyBzv2UUzafxg">YouTube Channel</a>
+        </p>
+        <p style="margin:0.35rem 0">
+          <a href="https://www.facebook.com/share/16s7D3rzrS/">Facebook Page</a>
+        </p>
+        <p style="margin:0.35rem 0">
+          <a href="https://whatsapp.com/channel/0029VbB52G9GZNCv3boyEL27">WhatsApp Channel</a>
+        </p>
+        <p style="margin:0.35rem 0">
+          <a href="https://x.com/hazra11004?s=08">X (Formerly Twitter)</a>
+        </p>
+      </section>
+
+
+      <section style="margin-top:18px" class="card">
+        <h3 style="margin:0 0 8px 0">Live counters</h3>
+        <div style="display:flex; gap:18px; align-items:center; flex-wrap:wrap;">
+          <div style="font-weight:800">Visitors: <span id="visitor-count-2">—</span></div>
+          <div style="font-weight:800">Total downloads: <span id="downloads-total-2">—</span></div>
+          <div style="color:var(--muted)">Per-version counts are shown above the buttons.</div>
+        </div>
+      </section>
+
+ 
+    </main>
+
+    <footer>
+      &copy; 2025 Palash Hazra — Polyglot VoiceCode
+    </footer>
+  </div>
+
+  <!-- Stats script same as original -->
+  <script>
+  /* CountAPI Integration */
+  (function(){
+    const NAMESPACE = 'polyglot-voicecode-palash';
+    const KEY_VISIT = 'visitors';
+    const KEY_DL_TOTAL = 'downloads_total';
+    const KEY_DL_IND = 'download_ind';
+    const KEY_DL_US = 'download_us';
+
+    const visElTop = document.getElementById('visitor-count');
+    const visEl = document.getElementById('visitor-count-2');
+    const totalEl = document.getElementById('downloads-total');
+    const totalEl2 = document.getElementById('downloads-total-2');
+    const indEl = document.getElementById('count-ind');
+    const usEl = document.getElementById('count-us');
+
+    async function getCount(key){
+      try {
+        const res = await fetch('https://api.countapi.xyz/get/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(key)}');
+        if(!res.ok) return 0;
+        const j = await res.json();
+        return Number(j.value) || 0;
+      } catch(e){ return 0; }
+    }
+
+    async function hitCount(key){
+      try {
+        const res = await fetch('https://api.countapi.xyz/hit/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(key)}');
+        if (!res.ok) return null;
+        return await res.json();
+      } catch(e){ return null; }
+    }
+
+    async function refreshAll(){
+      const [vis, total, ind, us] = await Promise.all([
+        getCount(KEY_VISIT),
+        getCount(KEY_DL_TOTAL),
+        getCount(KEY_DL_IND),
+        getCount(KEY_DL_US)
+      ]);
+      if(visElTop) visElTop.textContent = vis;
+      if(visEl) visEl.textContent = vis;
+      if(totalEl) totalEl.textContent = total;
+      if(totalEl2) totalEl2.textContent = total;
+      if(indEl) indEl.textContent = ind;
+      if(usEl) usEl.textContent = us;
+    }
+
+    window.addEventListener('DOMContentLoaded', async ()=> {
+      hitCount(KEY_VISIT).then(j => {
+        if(j && visElTop) visElTop.textContent = j.value;
+        if(j && visEl) visEl.textContent = j.value;
+      });
+      refreshAll();
+    });
+
+    function addDownloadHandler(selector, keyThis){
+      const el = document.querySelector(selector);
+      if(!el) return;
+      el.addEventListener('click', function(ev){
+        ev.preventDefault();
+        const href = el.getAttribute('href');
+        const hitThis = fetch('https://api.countapi.xyz/hit/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(keyThis)}).catch(()=>null');
+        const hitTotal = fetch('https://api.countapi.xyz/hit/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(KEY_DL_TOTAL)}).catch(()=>null');
+
+        Promise.all([hitThis, hitTotal]).then(async (results)=>{
+          try{
+            const rThis = results[0] ? await results[0].json() : null;
+            const rTot  = results[1] ? await results[1].json() : null;
+            if(rThis && keyThis === KEY_DL_IND && indEl) indEl.textContent = rThis.value;
+            if(rThis && keyThis === KEY_DL_US && usEl) usEl.textContent = rThis.value;
+            if(rTot && totalEl) totalEl.textContent = rTot.value;
+            if(rTot && totalEl2) totalEl2.textContent = rTot.value;
+          }catch(e){}
+          window.location.href = href;
+        });
+
+        setTimeout(()=>{ window.location.href = href; }, 600);
+      });
+    }
+
+    addDownloadHandler('#dl-ind', KEY_DL_IND);
+    addDownloadHandler('#dl-us', KEY_DL_US);
+  })();
+  </script>
+</body>
+</html>
