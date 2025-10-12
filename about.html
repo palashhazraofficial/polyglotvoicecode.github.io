@@ -1,0 +1,141 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>Polyglot VoiceCode</title>  
+  <style>  
+    /* ===== General Theme ===== */  
+    body {  
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;  
+      background-color: #0d0d0d;  
+      color: #f5f5f5;  
+      margin: 0;  
+      padding: 0;  
+      line-height: 1.6;  
+    }  
+  
+    h1, h2 {  
+      text-align: center;  
+      text-transform: uppercase;  
+      margin-bottom: 10px;  
+    }  
+  
+    h1 {  
+      font-size: 2.5rem;  
+      margin-top: 30px;  
+    }  
+  
+    p {  
+      text-align: center;  
+      margin: 10px 20px;  
+    }  
+  
+    /* ===== Section Styling ===== */  
+    section {  
+      max-width: 800px;  
+      margin: 40px auto;  
+      padding: 20px;  
+      border-radius: 12px;  
+      background: #1a1a1a;  
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);  
+    }  
+  
+    section h2 {  
+      border-bottom: 2px solid #333;  
+      padding-bottom: 10px;  
+      margin-bottom: 20px;  
+    }  
+  
+    /* ===== Video Section ===== */  
+    .video-container {  
+      display: flex;  
+      justify-content: center;  
+      margin: 30px auto;  
+      max-width: 900px;  
+      border-radius: 12px;  
+      overflow: hidden;  
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);  
+    }  
+  
+    .video-container iframe {  
+      width: 100%;  
+      height: 450px;  
+      border: none;  
+    }  
+  
+    /* ===== Button Styling ===== */  
+    .mail-btn {  
+      display: block;  
+      width: fit-content;  
+      margin: 40px auto;  
+      padding: 12px 30px;  
+      font-size: 1rem;  
+      color: #fff;  
+      text-decoration: none;  
+      border-radius: 30px;  
+      background: linear-gradient(90deg, #007bff, #3399ff);  
+      box-shadow: 0 0 15px #007bff, 0 0 30px #3399ff;  
+      transition: transform 0.2s ease, box-shadow 0.3s ease;  
+    }  
+  
+    .mail-btn:hover {  
+      transform: scale(1.1);  
+      box-shadow: 0 0 25px #007bff, 0 0 50px #3399ff;  
+    }  
+  </style>  
+</head>  
+<body>  
+  <!-- ===== Header ===== -->  
+  <header>  
+    <h1>About</h1>  
+    <p>Polyglot VoiceCode is a desktop application that allows you to type using your voice. It supports offline speech recognition using [vosk] (https://alphacephei.com/vosk/), means your privacy and reliability are on top.</p>  
+  </header>  
+
+  <!-- ===== Demo Video Section ===== -->  
+  <div class="video-container">  
+    <iframe src="https://www.youtube.com/embed/piPUP79PT2s"  
+      title="Demo Video" allowfullscreen>
+    </iframe>
+  </div>  
+  
+  <!-- ===== Sections ===== -->  
+  <section id="features">  
+    <h2>Features</h2>  
+    <p>🎤 Offline voice typing (no internet required)</p>
+    <p>🌐 Supports 20+ languages (Arabic, Hindi, English, Japenese, Korean and more)</p>
+    <p>🤍 Modern light theme status window</p>
+    <p>⌨ Toggle with hotkeys (Ctrl + Alt + V)</p>
+    <p>💻 Works in any text field across applications</p>  
+  </section>  
+  
+  <section id="requirements">  
+    <h2>Requirements</h2>  
+    <p>🖥 Windows 10/11 (64-bit)</p>
+    <p>🎤 Microphone access</p>  
+  </section>  
+  
+  <section id="installation">  
+    <h2>Installation</h2>  
+    <p>1. Download the installer ('Polyglot_VoiceCode_X_Setup.exe') from the official website</p>
+    <p>2. Run the installer and follow the on-screen instructions</p>
+    <p>3. Launch the application from the Start Menu</p>  
+  </section>  
+  
+  <section id="usage">  
+    <h2>Usage</h2>  
+    <p>1. Press Ctrl + Alt + V to start or stop voice typing mode</p>
+    <p>2. Speak clearly into your microphone</p>
+    <p>3. The recognized text will appear in the active text field where the cursoe blinks</p>  
+  </section>  
+  
+  <section id="license">  
+    <h2>License</h2>  
+    <p>This software is proprietary and cannot be copied, modified or redistributed without permission.
+See the 'LICENSE.txt' file from the license section for details</p>  
+  </section>  
+  
+  <!-- ===== Contact Button ===== -->  
+  <a href="mailto:contactpalashhazra@gmail.com" class="mail-btn">Contact Us</a>  
+</body>  
+</html>
