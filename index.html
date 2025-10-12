@@ -1,145 +1,192 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-  <meta charset="UTF-8">  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-  <title>Polyglot VoiceCode</title>  
-  <style>  
-    /* ===== General Theme ===== */  
-    body {  
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;  
-      background-color: #0d0d0d;  
-      color: #f5f5f5;  
-      margin: 0;  
-      padding: 0;  
-      line-height: 1.6;  
-    }  
-  
-    h1, h2 {  
-      text-align: center;  
-      text-transform: uppercase;  
-      margin-bottom: 10px;  
-    }  
-  
-    h1 {  
-      font-size: 2.5rem;  
-      margin-top: 30px;  
-    }  
-  
-    p {  
-      text-align: center;  
-      margin: 10px 20px;  
-    }  
-  
-    /* ===== Section Styling ===== */  
-    section {  
-      max-width: 800px;  
-      margin: 40px auto;  
-      padding: 20px;  
-      border-radius: 12px;  
-      background: #1a1a1a;  
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);  
-    }  
-  
-    section h2 {  
-      border-bottom: 2px solid #333;  
-      padding-bottom: 10px;  
-      margin-bottom: 20px;  
-    }  
-  
-    /* ===== Video Section ===== */  
-    /*
-    .video-container {  
-      display: flex;  
-      justify-content: center;  
-      margin: 30px auto;  
-      max-width: 900px;  
-      border-radius: 12px;  
-      overflow: hidden;  
-      box-shadow: 0 0 20px rgba(0,0,0,0.6);  
-    }  
-  
-    .video-container iframe {  
-      width: 100%;  
-      height: 450px;  
-      border: none;  
-    }  
-    */
-  
-    /* ===== Button Styling ===== */  
-    .mail-btn {  
-      display: block;  
-      width: fit-content;  
-      margin: 40px auto;  
-      padding: 12px 30px;  
-      font-size: 1rem;  
-      color: #fff;  
-      text-decoration: none;  
-      border-radius: 30px;  
-      background: linear-gradient(90deg, #007bff, #3399ff);  
-      box-shadow: 0 0 15px #007bff, 0 0 30px #3399ff;  
-      transition: transform 0.2s ease, box-shadow 0.3s ease;  
-    }  
-  
-    .mail-btn:hover {  
-      transform: scale(1.1);  
-      box-shadow: 0 0 25px #007bff, 0 0 50px #3399ff;  
-    }  
-  </style>  
-</head>  
-<body>  
-  <!-- ===== Header ===== -->  
-  <header>  
-    <h1>About</h1>  
-    <p>Polyglot VoiceCode is a desktop application that allows you to type using your voice. It supports offline speech recognition using [vosk] (https://alphacephei.com/vosk/), means your privacy and reliability are on top.</p>  
-  </header>  
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Polyglot VoiceCode</title>
+<meta name="description" content="Polyglot VoiceCode — Offline voice typing for Windows (VOSK).">
 
-  <!-- ===== Demo Video Section ===== -->  
-  <!--<div class="video-container">  
-    <iframe src="https://www.youtube.com/embed/piPUP79PT2s"  
-      title="Demo Video" allowfullscreen>
-    </iframe>
-  </div>-->  
-  
-  <!-- ===== Sections ===== -->  
-  <section id="features">  
-    <h2>Features</h2>  
-    <p>🎤 Offline voice typing (no internet required)</p>
-    <p>🌐 Supports 20+ languages (Arabic, Hindi, English, Japenese, Korean and more)</p>
-    <p>🤍 Modern light theme status window</p>
-    <p>⌨ Toggle with hotkeys (Ctrl + Alt + V)</p>
-    <p>💻 Works in any text field across applications</p>  
-  </section>  
-  
-  <section id="requirements">  
-    <h2>Requirements</h2>  
-    <p>🖥 Windows 10/11 (64-bit)</p>
-    <p>🎤 Microphone access</p>  
-  </section>  
-  
-  <section id="installation">  
-    <h2>Installation</h2>  
-    <p>1. Download the installer ('Polyglot_VoiceCode_X_Setup.exe') from the official website</p>
-    <p>2. Run the installer and follow the on-screen instructions</p>
-    <p>3. Launch the application from the Start Menu</p>  
-  </section>  
-  
-  <section id="usage">  
-    <h2>Usage</h2>  
-    <p>1. Press Ctrl + Alt + V to start or stop voice typing mode</p>
-    <p>2. Speak clearly into your microphone</p>
-    <p>3. The recognized text will appear in the active text field where the cursoe blinks</p>  
-  </section>  
-  
-  <section id="license">  
-    <h2>License</h2>  
-    <p>This software is proprietary and cannot be copied, modified or redistributed without permission.
-See the 'LICENSE.txt' file from the license section for details</p>  
-  </section>  
-  
-  <!-- ===== Contact Button ===== -->  
-  <a href="mailto:contactpalashhazra@gmail.com" class="mail-btn">Contact Us</a>  
-</body>  
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXGH5VZ50E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXGH5VZ50E');
+</script>
+
+<style>
+:root {
+  --bg: #000;
+  --text: #fff;
+  --accent: #fff;
+  --accent-hover: #555;
+  --radius: 14px;
+  --mono: "Segoe UI", Roboto, Arial, sans-serif;
+  --trial-glow: #00ff55;
+  --premium-glow: #ffd700;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: var(--mono);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes floaty { 0% { transform: translateY(0); } 50% { transform: translateY(-6px); } 100% { transform: translateY(0); } }
+@keyframes glowGreen { 0%,100% { box-shadow: 0 0 12px var(--trial-glow); } 50% { box-shadow: 0 0 25px var(--trial-glow); } }
+@keyframes glowGold { 0%,100% { box-shadow: 0 0 12px var(--premium-glow); } 50% { box-shadow: 0 0 25px var(--premium-glow); } }
+
+.wrap { max-width: 1000px; margin: auto; padding: 20px; }
+
+/* HEADER */
+header { display: flex; align-items: center; gap: 14px; justify-content: center; padding: 20px; text-align: center; }
+header img { height: 60px; animation: floaty 4s ease-in-out infinite; }
+h1 { margin: 0; font-size: 26px; font-weight: 900; }
+
+/* VIDEO */
+/*
+.video-section iframe { width: 100%; height: 400px; border-radius: var(--radius); border: none; box-shadow: 0 4px 16px rgba(255,255,255,0.1); }
+*/
+
+/* Buttons */
+.button-row { display: flex; gap: 14px; justify-content: center; margin: 20px 0; }
+.btn {
+  flex: 1;
+  text-align: center;
+  padding: 14px;
+  border-radius: var(--radius);
+  font-weight: bold;
+  text-decoration: none;
+  background: var(--accent);
+  color: #000;
+  transition: transform .2s ease, background .2s ease;
+}
+.btn:hover { transform: translateY(-4px); background: var(--accent-hover); color: #fff; }
+
+/* Big download buttons */
+.big-buttons { display: flex; gap: 20px; margin: 30px 0; }
+.big-btn {
+  flex: 1;
+  padding: 40px 20px;
+  font-size: 20px;
+  font-weight: 900;
+  text-align: center;
+  border-radius: var(--radius);
+  background: #111;
+  border: 2px solid #fff;
+  transition: transform .2s ease, background .2s ease, color .2s ease;
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+}
+.big-btn:hover { transform: translateY(-6px); }
+.big-btn.trial { animation: glowGreen 2s infinite; border-color: var(--trial-glow); }
+.big-btn.premium { animation: glowGold 2s infinite; border-color: var(--premium-glow); }
+
+/* WHY USE POLYGLOT */
+.why-section { margin: 30px 0; text-align: center; animation: fadeIn 1s ease-in; }
+.why-section h3 { font-size: 24px; margin-bottom: 12px; }
+.why-section p { color: #ccc; font-size: 16px; }
+
+/* Feedback & Newsletter */
+.card { background: #111; border-radius: var(--radius); padding: 20px; margin-top: 20px; border: 1px solid #333; box-shadow: 0 4px 14px rgba(255,255,255,0.05); animation: fadeIn 1s ease-in; text-align:center; }
+.card a.btn { display: inline-block; margin-top: 10px; }
+
+/* Social icons row */
+.social-row { display: grid; grid-template-columns: repeat(7, 1fr); gap: 14px; margin-top: 20px; }
+.social-row a { display: block; padding: 14px; border-radius: var(--radius); background: #111; text-align: center; transition: transform .2s ease, background .2s ease; }
+.social-row a:hover { background: #fff; color: #000; transform: translateY(-4px); }
+
+/* Footer */
+footer { margin-top: 30px; text-align: center; color: #777; font-size: 14px; }
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <!-- HEADER -->
+  <header>
+    <img src="favicon.ico" alt="Polyglot Logo">
+    <div>
+      <h1>Polyglot VoiceCode 1.1.0</h1>
+      <div class="tag">Type Less, Do More</div>
+    </div>
+  </header>
+
+  <!-- VIDEO -->
+  <!--<section class="video-section card">
+    <iframe src="https://www.youtube.com/embed/piPUP79PT2s" allowfullscreen></iframe>
+  </section>-->
+
+  <!-- ABOUT + LICENSE -->
+  <div class="button-row">
+    <a href="about.html" class="btn">📖 About</a>
+    <a href="license.html" class="btn">📜 License</a>
+  </div>
+
+  <!-- WHY USE POLYGLOT -->
+  <section class="why-section">
+    <h3>Why You Should Use Polyglot VoiceCode?</h3>
+    <p>Polyglot VoiceCode is a voice typing application that 1. Available in 10 languages. 2. Completely offline. Means your privacy and reliability are on top. 3. It saves your time with a minimum onetime fee. 4. Samelessly intregate with any application across Windows10/11. 5. Nothing have much more than this.</p>
+  </section>
+
+  <!-- TRIAL + PREMIUM -->
+  <div class="big-buttons">
+    <!--<a href="#" class="big-btn trial">FREE TRIAL<br><small>Get a free trial for 30min. Download Freemium</small></a>-->
+    <a href="premium.html" class="big-btn premium">BUY THE FULL APP<br><small>10 languages — ₹99 / Lifetime</small></a>
+  </div>
+
+  <!-- FEEDBACK -->
+  <section class="card">
+    <h3>✍ Write Something About Your Experience</h3>
+    <p>Feedback, contact, issues or suggestions are welcome.</p>
+    <a href="https://docs.google.com/forms/d/1sxoHxiPRS1q_HQMb0_fKMqYCOcHaCnr7P9wV8lX9HOI/viewform" class="btn">Give Feedback</a>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="card">
+    <h3>📩 Subscribe Newsletters for FREE</h3>
+    <p>Be a family member. Get latest updates and launches with exciting future offers.</p>
+    <a href="https://docs.google.com/forms/d/1Z0yB3gwZbFIOl_1MQAHRfH4vsTBh5l65RxUOG6p39D8/viewform" class="btn">Join Newsletter</a>
+  </section>
+
+  <!-- SOCIAL ICONS -->
+  <section class="social-row">
+    <a href="https://www.facebook.com/share/16s7D3rzrS/" target="_blank">
+      <img src="facebook_icons.png" alt="Facebook">
+    </a>
+    <a href="https://x.com/hazra11004" target="_blank">
+      <img src="x_icons.jpg" alt="X (Twitter)">
+    </a>
+    <a href="https://www.linkedin.com/in/palash-hazra-294b9036b" target="_blank">
+      <img src="linkedin_icons.png" alt="LinkedIn">
+    </a>
+    <a href="https://youtube.com/@palashhazraofficial" target="_blank">
+      <img src="youtube_icons.png" alt="YouTube">
+    </a>
+    <a href="https://www.instagram.com/palashhazraofficial" target="_blank">
+      <img src="instagram_icons.jpg" alt="Instagram">
+    </a>
+    <a href="https://whatsapp.com/channel/0029VbB52G9GZNCv3boyEL27" target="_blank">
+      <img src="whatsapp_icons.png" alt="WhatsApp">
+    </a>
+    <a href="https://t.me/palashhazrareal" target="_blank">
+      <img src="telegram_icons.png" alt="Telegram">
+    </a>
+  </section>
+  <footer>
+    &copy; 2025 Palash Hazra — Polyglot VoiceCode
+  </footer>
+
+</div>
+</body>
 </html>
 
 
